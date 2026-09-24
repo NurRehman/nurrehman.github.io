@@ -94,6 +94,10 @@
   .timeline .r{font-weight:700}
   .timeline .o{font-family:var(--mono);font-size:.82rem;color:var(--acc)}
   .timeline .w{font-family:var(--mono);font-size:.78rem;color:var(--dim)}
+  .portrait{margin:0 0 34px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+  .portrait img{display:block;width:100%;height:auto}
+  .portrait figcaption{font-family:var(--mono);font-size:.75rem;color:var(--dim);padding:12px 16px;border-top:1px solid var(--line)}
+  .portrait figcaption .g{color:var(--acc)}
 
   /* contact */
   .contact-big{font-size:clamp(1.4rem,3.4vw,2.2rem);font-weight:750;letter-spacing:-.02em;margin:26px 0 34px;word-break:break-all}
@@ -206,12 +210,18 @@
         <p>The recurring lesson: <strong>architecture is mostly about the decisions you avoid</strong>, and the best system is the one the next team can actually maintain.</p>
         <p>I write and make videos to pass on what production taught me — bluntly, and without the enterprise jargon.</p>
       </div>
+      <div>
+        <figure class="portrait">
+          <img src="photo.jpg" alt="Nadeem Ur-Rehman" loading="lazy">
+          <figcaption><span class="g">//</span> the human behind the opinions</figcaption>
+        </figure>
       <ul class="timeline">
         <li><div class="r">Technical Architect (UI)</div><div class="o">Qatar Airways</div><div class="w">2024 — now</div></li>
         <li><div class="r">Lead Software Development Engineer, UI</div><div class="o">Mastercard — Toronto</div><div class="w">2020 — 2024</div></li>
         <li><div class="r">Senior Application Engineer</div><div class="o">Citi — Mississauga</div><div class="w">2017 — 2020</div></li>
         <li><div class="r">Earlier</div><div class="o">Intuit, Capco, The Weather Network</div><div class="w">2008 — 2017</div></li>
       </ul>
+      </div>
     </div>
   </div>
 </section>
