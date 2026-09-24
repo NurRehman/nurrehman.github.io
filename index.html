@@ -1,243 +1,239 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Nadeem Ur-Rehman — Frontend Architect</title>
-  <meta name="description" content="Nadeem Ur-Rehman is a Technical Architect (UI) with 14+ years building large-scale frontend systems. Author of The Frontend System Design Interview Playbook. Creator of bitTalk." />
-  <meta property="og:title" content="Nadeem Ur-Rehman — Frontend Architect" />
-  <meta property="og:description" content="14+ years of frontend architecture across airlines, banks, and global platforms. I write the playbook and make the videos." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://nurrehman.github.io/" />
-  <meta name="theme-color" content="#faf8f3" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#12100c" media="(prefers-color-scheme: dark)" />
-  <style>
-    :root {
-      --paper: #faf8f3;
-      --ink: #1b1712;
-      --muted: #6f675c;
-      --accent: #1e5b3c;
-      --accent-ink: #ffffff;
-      --line: #e4ded2;
-      --card: #f3efe6;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --paper: #12100c;
-        --ink: #ece7db;
-        --muted: #a39a89;
-        --accent: #7fc79b;
-        --accent-ink: #12100c;
-        --line: #2b261e;
-        --card: #1a1712;
-      }
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      font-size: 1.0625rem;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-    .wrap { max-width: 44rem; margin: 0 auto; padding: 0 1.5rem; }
-    /* nav */
-    nav { border-bottom: 1px solid var(--line); }
-    nav .wrap {
-      display: flex; align-items: center; justify-content: space-between;
-      padding-top: 1rem; padding-bottom: 1rem;
-    }
-    .wordmark { font-weight: 700; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
-    .navlinks { display: flex; gap: 1.25rem; font-size: 0.9375rem; }
-    .navlinks a { color: var(--muted); text-decoration: none; }
-    .navlinks a:hover { color: var(--ink); }
-    @media (max-width: 560px) { .navlinks { display: none; } }
-    /* hero */
-    header.hero { padding: 4.5rem 0 3.5rem; }
-    .eyebrow {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 0.8125rem; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--accent); margin: 0 0 1rem;
-    }
-    h1 {
-      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-      font-size: clamp(2.25rem, 6vw, 3.25rem);
-      line-height: 1.12; letter-spacing: -0.02em;
-      margin: 0 0 1.25rem; font-weight: 600;
-    }
-    .lede { font-size: 1.1875rem; color: var(--muted); max-width: 36rem; margin: 0 0 2rem; }
-    .lede strong { color: var(--ink); font-weight: 600; }
-    .cta-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
-    .btn {
-      display: inline-block; background: var(--accent); color: var(--accent-ink);
-      padding: 0.75rem 1.5rem; border-radius: 999px; text-decoration: none;
-      font-weight: 600; font-size: 1rem;
-    }
-    .btn:hover { filter: brightness(1.08); }
-    .textlink { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--accent); }
-    .textlink:hover { color: var(--accent); }
-    /* sections */
-    section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
-    h2 {
-      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-      font-size: clamp(1.625rem, 4vw, 2.125rem);
-      letter-spacing: -0.015em; line-height: 1.2;
-      margin: 0 0 1rem; font-weight: 600;
-    }
-    section p { margin: 0 0 1rem; max-width: 38rem; }
-    section p.muted { color: var(--muted); }
-    /* book card */
-    .book-card {
-      background: var(--card); border: 1px solid var(--line); border-radius: 1rem;
-      padding: 2rem; margin-top: 1.5rem;
-    }
-    .book-card h3 {
-      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-      font-size: 1.375rem; margin: 0 0 0.5rem; letter-spacing: -0.01em;
-    }
-    .price { font-weight: 700; font-size: 1.25rem; margin: 1rem 0; }
-    .fineprint { font-size: 0.875rem; color: var(--muted); margin: 1rem 0 0; }
-    /* link lists */
-    ul.links { list-style: none; padding: 0; margin: 1.5rem 0 0; }
-    ul.links li { padding: 0.875rem 0; border-top: 1px solid var(--line); }
-    ul.links li:last-child { border-bottom: 1px solid var(--line); }
-    ul.links a { color: var(--ink); text-decoration: none; font-weight: 600; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
-    ul.links a:hover { color: var(--accent); }
-    ul.links .desc { font-weight: 400; color: var(--muted); font-size: 0.9375rem; }
-    ul.links .arrow { color: var(--accent); flex-shrink: 0; }
-    /* experience */
-    ul.roles { list-style: none; padding: 0; margin: 1.5rem 0 0; }
-    ul.roles li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.75rem 0; border-top: 1px solid var(--line); }
-    ul.roles li:last-child { border-bottom: 1px solid var(--line); }
-    .role-title { font-weight: 600; }
-    .role-org { color: var(--muted); }
-    .role-when { color: var(--muted); font-size: 0.9375rem; white-space: nowrap; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.8125rem; padding-top: 0.25rem; }
-    /* footer */
-    footer { border-top: 1px solid var(--line); padding: 2.5rem 0 3rem; color: var(--muted); font-size: 0.9375rem; }
-    footer p { margin: 0 0 0.5rem; }
-  </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Nadeem Ur-Rehman",
-    "jobTitle": "Technical Architect (UI)",
-    "url": "https://nurrehman.github.io/",
-    "sameAs": [
-      "https://www.linkedin.com/in/nurrehman",
-      "https://medium.com/@nurrehman",
-      "https://www.youtube.com/@bitsTalk00",
-      "https://www.instagram.com/bit.talk00",
-      "https://www.tiktok.com/@bittalk00"
-    ]
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nadeem Ur-Rehman — Frontend Architect</title>
+<meta name="description" content="Nadeem Ur-Rehman, Technical Architect (UI) in Toronto. I build frontend architecture that survives contact with scale. Author of The Frontend System Design Interview Playbook. Creator of bitTalk.">
+<style>
+  :root{
+    --bg:#0a0c0f;
+    --panel:#101318;
+    --line:rgba(255,255,255,.09);
+    --txt:#e9edf1;
+    --dim:#9aa3ad;
+    --acc:#3ddc84;
+    --acc-dim:rgba(61,220,132,.12);
+    --mono:ui-monospace,'SF Mono','Cascadia Code','JetBrains Mono',Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif;
   }
-  </script>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--acc);color:#04120a}
+  a{color:inherit}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 28px}
+
+  /* top bar */
+  .top{position:sticky;top:0;z-index:50;background:rgba(10,12,15,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:var(--mono);font-size:.85rem;color:var(--acc);text-decoration:none}
+  .brand .cursor{display:inline-block;width:8px;height:15px;background:var(--acc);vertical-align:-2px;margin-left:6px;animation:blink 1.1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  nav{display:flex;gap:26px}
+  nav a{font-family:var(--mono);font-size:.8rem;color:var(--dim);text-decoration:none;transition:color .15s}
+  nav a:hover{color:var(--acc)}
+  @media(max-width:640px){nav{display:none}}
+
+  /* hero */
+  .hero{padding:110px 0 70px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-220px;left:50%;transform:translateX(-50%);width:800px;height:440px;background:radial-gradient(closest-side,rgba(61,220,132,.10),transparent);pointer-events:none}
+  .whoami{font-family:var(--mono);font-size:.85rem;color:var(--acc);margin-bottom:26px}
+  .whoami .dim{color:var(--dim)}
+  h1{font-size:clamp(2.6rem,6.4vw,4.6rem);font-weight:800;letter-spacing:-.03em;line-height:1.04;max-width:15ch}
+  h1 .hl{color:var(--acc)}
+  .lede{margin-top:28px;font-size:1.15rem;color:var(--dim);max-width:56ch}
+  .lede strong{color:var(--txt);font-weight:600}
+  .cta-row{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+  .btn{font-family:var(--mono);font-size:.9rem;font-weight:700;background:var(--acc);color:#04120a;text-decoration:none;padding:15px 26px;border-radius:6px;transition:transform .12s,box-shadow .12s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(61,220,132,.35)}
+  .btn-ghost{font-family:var(--mono);font-size:.9rem;color:var(--txt);text-decoration:none;padding:15px 26px;border:1px solid var(--line);border-radius:6px;transition:border-color .15s,color .15s}
+  .btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+
+  /* stats */
+  .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel)}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);padding-top:30px;padding-bottom:30px}
+  .stat{padding:6px 24px;border-left:1px solid var(--line)}
+  .stat:first-child{border-left:none;padding-left:0}
+  .stat b{display:block;font-size:2rem;font-weight:800;letter-spacing:-.02em;color:var(--acc);font-family:var(--mono)}
+  .stat span{font-size:.85rem;color:var(--dim)}
+  @media(max-width:640px){.stats .wrap{grid-template-columns:repeat(2,1fr);gap:20px}.stat:nth-child(3){border-left:none;padding-left:0}}
+
+  /* sections */
+  section{padding:84px 0}
+  .sec-label{font-family:var(--mono);font-size:.82rem;color:var(--acc);margin-bottom:14px}
+  .sec-label .n{color:var(--dim);margin-right:10px}
+  h2{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;line-height:1.12;margin-bottom:18px;max-width:22ch}
+  .sec-sub{color:var(--dim);max-width:60ch;margin-bottom:36px;font-size:1.05rem}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:38px;transition:border-color .2s}
+  .card:hover{border-color:rgba(61,220,132,.4)}
+  @media(max-width:640px){.card{padding:26px}}
+  .card h3{font-size:1.5rem;font-weight:750;letter-spacing:-.015em;margin-bottom:12px}
+  .card p{color:var(--dim);margin-bottom:14px}
+  .card p strong{color:var(--txt)}
+  .price{font-family:var(--mono);color:var(--acc);font-weight:700;margin:20px 0 24px;display:block}
+  .tag{display:inline-block;font-family:var(--mono);font-size:.72rem;color:var(--acc);background:var(--acc-dim);border:1px solid rgba(61,220,132,.3);padding:4px 10px;border-radius:4px;margin:0 8px 8px 0}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+  .row-card{display:flex;align-items:center;justify-content:space-between;gap:18px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:26px 28px;text-decoration:none;transition:border-color .2s,transform .12s}
+  .row-card:hover{border-color:rgba(61,220,132,.4);transform:translateY(-2px)}
+  .row-card .t{font-weight:700;font-size:1.05rem}
+  .row-card .d{color:var(--dim);font-size:.9rem;margin-top:4px}
+  .row-card .arr{font-family:var(--mono);color:var(--acc);font-size:1.3rem;flex-shrink:0}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:start}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr}}
+  .about-grid p{color:var(--dim);margin-bottom:16px}
+  .about-grid p strong{color:var(--txt)}
+  .timeline{list-style:none;border-left:1px solid var(--line);padding-left:0}
+  .timeline li{position:relative;padding:0 0 28px 26px}
+  .timeline li::before{content:"";position:absolute;left:-5px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--acc)}
+  .timeline .r{font-weight:700}
+  .timeline .o{font-family:var(--mono);font-size:.82rem;color:var(--acc)}
+  .timeline .w{font-family:var(--mono);font-size:.78rem;color:var(--dim)}
+
+  /* contact */
+  .contact-big{font-size:clamp(1.4rem,3.4vw,2.2rem);font-weight:750;letter-spacing:-.02em;margin:26px 0 34px;word-break:break-all}
+  .contact-big a{color:var(--acc);text-decoration:none;border-bottom:2px solid rgba(61,220,132,.35)}
+  .contact-big a:hover{border-color:var(--acc)}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 44px}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer p{font-family:var(--mono);font-size:.78rem;color:var(--dim)}
+</style>
 </head>
 <body>
-  <nav>
-    <div class="wrap">
-      <a class="wordmark" href="#top">Nadeem Ur-Rehman</a>
-      <div class="navlinks">
-        <a href="#book">Book</a>
-        <a href="#videos">Videos</a>
-        <a href="#writing">Writing</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">nurrehman<span class="cursor"></span></a>
+    <nav>
+      <a href="#book">book</a>
+      <a href="#videos">videos</a>
+      <a href="#writing">writing</a>
+      <a href="#about">about</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <p class="whoami"><span class="dim">$</span> whoami</p>
+    <h1>I build frontend architecture that <span class="hl">survives contact with scale.</span></h1>
+    <p class="lede">I'm <strong>Nadeem Ur-Rehman</strong> — Technical Architect (UI), based in Toronto. Fourteen years inside airlines, banks, and global platforms. I write the playbook I wish existed, and I make short videos about the things they never taught in school.</p>
+    <div class="cta-row">
+      <a class="btn" href="https://bittalk.gumroad.com/l/frontend-interview-playbook">$ get-the-playbook</a>
+      <a class="btn-ghost" href="#videos">watch bittalk</a>
     </div>
-  </nav>
+  </div>
+</div>
 
-  <header class="hero" id="top">
-    <div class="wrap">
-      <p class="eyebrow">Technical Architect (UI) — Toronto</p>
-      <h1>I build frontend architecture that survives contact with scale.</h1>
-      <p class="lede">I'm <strong>Nadeem Ur-Rehman</strong>. Fourteen years across airlines, banks, and global platforms — currently Technical Architect (UI) at Qatar Airways, based in Toronto. I write the playbook I wish existed, and I make short videos about the things they never taught in school.</p>
-      <div class="cta-row">
-        <a class="btn" href="https://bittalk.gumroad.com/l/frontend-interview-playbook">Get the Interview Playbook — $19</a>
-        <a class="textlink" href="#videos">Watch bitTalk</a>
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>14+</b><span>years shipping production frontend</span></div>
+    <div class="stat"><b>60</b><span>architect-level interview questions in the book</span></div>
+    <div class="stat"><b>45</b><span>pages. Zero filler.</span></div>
+    <div class="stat"><b>3</b><span>platforms. New shorts daily.</span></div>
+  </div>
+</div>
+
+<section id="book">
+  <div class="wrap">
+    <p class="sec-label"><span class="n">01</span>// the book</p>
+    <h2>The Frontend System Design Interview Playbook</h2>
+    <p class="sec-sub">Sixty architect-level frontend system design questions — with the answer frameworks, trade-offs, and follow-up probes that separate senior from staff.</p>
+    <div class="card">
+      <div>
+        <span class="tag">60 questions</span><span class="tag">answer frameworks</span><span class="tag">6 design drills</span><span class="tag">scoring rubric</span><span class="tag">whiteboard canvas</span>
       </div>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <section id="book">
-      <p class="eyebrow">The book</p>
-      <h2>The Frontend System Design Interview Playbook</h2>
-      <p>Sixty architect-level frontend system design questions — with the answer frameworks, trade-offs, and follow-up probes that separate senior from staff. Plus whiteboard drills, a scoring rubric, and a final checklist. The stuff I wish candidates — and interviewers — actually prepared.</p>
-      <div class="book-card">
-        <h3>What you get</h3>
-        <p class="muted">60 questions across rendering, state, performance, resilience, and org-scale design. Concise answer frameworks for each. Six hands-on design drills and a blank whiteboard canvas to practice on.</p>
-        <p class="price">$19 <span class="fineprint" style="display:inline; margin:0;">— 45-page PDF, yours to keep</span></p>
-        <a class="btn" href="https://bittalk.gumroad.com/l/frontend-interview-playbook">Get the playbook</a>
-        <p class="fineprint">No fluff. If it doesn't make you sharper in interviews, it failed its job.</p>
+      <p style="margin-top:18px">Rendering, state, performance, resilience, org-scale design. Concise frameworks for each question, the trade-offs interviewers actually probe, and the follow-ups that catch memorized answers.</p>
+      <p><strong>Six hands-on design drills</strong> and a blank whiteboard canvas to practice on. A scoring rubric so you know when you're ready. A final checklist for the night before.</p>
+      <span class="price">$19 — 45-page PDF, yours to keep</span>
+      <div class="cta-row" style="margin-top:0">
+        <a class="btn" href="https://bittalk.gumroad.com/l/frontend-interview-playbook">$ get-the-playbook</a>
       </div>
-    </section>
-
-    <section id="videos">
-      <p class="eyebrow">bitTalk</p>
-      <h2>Tech in under 20 seconds.</h2>
-      <p>Short videos on architecture fails, WTF bugs, and the things they never taught in school. New shorts every day — dev, architecture, cloud, and career tips, minus the lecture.</p>
-      <ul class="links">
-        <li><a href="https://www.youtube.com/@bitsTalk00"><span>YouTube <span class="desc">— daily shorts</span></span><span class="arrow">→</span></a></li>
-        <li><a href="https://www.instagram.com/bit.talk00"><span>Instagram <span class="desc">— @bit.talk00</span></span><span class="arrow">→</span></a></li>
-        <li><a href="https://www.tiktok.com/@bittalk00"><span>TikTok <span class="desc">— @bittalk00</span></span><span class="arrow">→</span></a></li>
-      </ul>
-    </section>
-
-    <section id="writing">
-      <p class="eyebrow">Writing</p>
-      <h2>Longer thoughts, same bluntness.</h2>
-      <p>Essays on frontend architecture, engineering leadership, and building software that lasts. Dense, practical, and allergic to filler.</p>
-      <ul class="links">
-        <li><a href="https://medium.com/@nurrehman"><span>Medium <span class="desc">— @nurrehman</span></span><span class="arrow">→</span></a></li>
-        <li><a href="https://www.linkedin.com/in/nurrehman"><span>LinkedIn <span class="desc">— posts and articles</span></span><span class="arrow">→</span></a></li>
-      </ul>
-    </section>
-
-    <section id="about">
-      <p class="eyebrow">About</p>
-      <h2>Fourteen years of production scars.</h2>
-      <p>I've spent my career inside large-scale frontend systems — fraud and dispute platforms at Mastercard, banking systems at Citi, and now the digital storefront of a global airline at Qatar Airways. The recurring lesson: architecture is mostly about the decisions you avoid, and the best system is the one the next team can actually maintain.</p>
-      <p>I write and make videos to pass on what production taught me — bluntly, and without the enterprise jargon.</p>
-      <ul class="roles">
-        <li>
-          <div><div class="role-title">Technical Architect (UI)</div><div class="role-org">Qatar Airways — Toronto</div></div>
-          <div class="role-when">2024 — now</div>
-        </li>
-        <li>
-          <div><div class="role-title">Lead Software Development Engineer, UI</div><div class="role-org">Mastercard — Toronto</div></div>
-          <div class="role-when">2020 — 2024</div>
-        </li>
-        <li>
-          <div><div class="role-title">Senior Application Engineer</div><div class="role-org">Citi — Mississauga</div></div>
-          <div class="role-when">2017 — 2020</div>
-        </li>
-        <li>
-          <div><div class="role-title">Earlier</div><div class="role-org">Intuit, Capco, The Weather Network — and a decade of shipping for the web</div></div>
-          <div class="role-when">2008 — 2017</div>
-        </li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <p class="eyebrow">Contact</p>
-      <h2>Say hello.</h2>
-      <p>Happy to talk about staff/principal frontend and UI architect roles in Toronto — or just talk shop about frontend architecture. I'll probably argue about micro frontends.</p>
-      <ul class="links">
-        <li><a href="mailto:nadeem.ur-rehman@outlook.com"><span>Email <span class="desc">— nadeem.ur-rehman@outlook.com</span></span><span class="arrow">→</span></a></li>
-        <li><a href="https://www.linkedin.com/in/nurrehman"><span>LinkedIn <span class="desc">— /in/nurrehman</span></span><span class="arrow">→</span></a></li>
-      </ul>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <p>© 2026 Nadeem Ur-Rehman.</p>
-      <p>Hand-built with plain HTML and CSS. No frameworks were harmed.</p>
+      <p style="margin-top:18px;margin-bottom:0;font-size:.9rem">No fluff. If it doesn't make you sharper in interviews, it failed its job.</p>
     </div>
-  </footer>
+  </div>
+</section>
+
+<section id="videos" style="padding-top:0">
+  <div class="wrap">
+    <p class="sec-label"><span class="n">02</span>// videos</p>
+    <h2>Tech in under 20 seconds.</h2>
+    <p class="sec-sub">bitTalk — daily shorts on architecture fails, WTF bugs, and the things they never taught in school. Minus the lecture.</p>
+    <div class="grid2">
+      <a class="row-card" href="https://www.youtube.com/@bitsTalk00">
+        <div><div class="t">YouTube</div><div class="d">@bitsTalk00 — daily shorts</div></div><div class="arr">-&gt;</div>
+      </a>
+      <a class="row-card" href="https://www.instagram.com/bit.talk00/">
+        <div><div class="t">Instagram</div><div class="d">@bit.talk00</div></div><div class="arr">-&gt;</div>
+      </a>
+      <a class="row-card" href="https://www.tiktok.com/@bittalk00" style="grid-column:1/-1">
+        <div><div class="t">TikTok</div><div class="d">@bittalk00</div></div><div class="arr">-&gt;</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="writing" style="padding-top:0">
+  <div class="wrap">
+    <p class="sec-label"><span class="n">03</span>// writing</p>
+    <h2>Longer thoughts, same bluntness.</h2>
+    <p class="sec-sub">Essays on frontend architecture, engineering leadership, and building software that lasts. Dense, practical, allergic to filler.</p>
+    <div class="grid2">
+      <a class="row-card" href="https://medium.com/@nurrehman">
+        <div><div class="t">Medium</div><div class="d">@nurrehman — essays &amp; deep dives</div></div><div class="arr">-&gt;</div>
+      </a>
+      <a class="row-card" href="https://www.linkedin.com/in/nurrehman">
+        <div><div class="t">LinkedIn</div><div class="d">/in/nurrehman — posts &amp; articles</div></div><div class="arr">-&gt;</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="padding-top:0">
+  <div class="wrap">
+    <p class="sec-label"><span class="n">04</span>// about</p>
+    <h2>Fourteen years of production scars.</h2>
+    <div class="about-grid" style="margin-top:30px">
+      <div>
+        <p>I've spent my career inside <strong>large-scale frontend systems</strong> — fraud and dispute platforms at Mastercard, banking systems at Citi, and now the digital storefront of a global airline at Qatar Airways.</p>
+        <p>The recurring lesson: <strong>architecture is mostly about the decisions you avoid</strong>, and the best system is the one the next team can actually maintain.</p>
+        <p>I write and make videos to pass on what production taught me — bluntly, and without the enterprise jargon.</p>
+      </div>
+      <ul class="timeline">
+        <li><div class="r">Technical Architect (UI)</div><div class="o">Qatar Airways — Toronto</div><div class="w">2024 — now</div></li>
+        <li><div class="r">Lead Software Development Engineer, UI</div><div class="o">Mastercard — Toronto</div><div class="w">2020 — 2024</div></li>
+        <li><div class="r">Senior Application Engineer</div><div class="o">Citi — Mississauga</div><div class="w">2017 — 2020</div></li>
+        <li><div class="r">Earlier</div><div class="o">Intuit, Capco, The Weather Network</div><div class="w">2008 — 2017</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <p class="sec-label"><span class="n">05</span>// contact</p>
+    <h2>Say hello.</h2>
+    <p class="sec-sub">Happy to talk about staff/principal frontend and UI architect roles in Toronto — or just talk shop about frontend architecture. I'll probably argue about micro frontends.</p>
+    <p class="contact-big"><a href="mailto:nadeem.ur-rehman@outlook.com">nadeem.ur-rehman@outlook.com</a></p>
+    <div class="cta-row" style="margin-top:0">
+      <a class="btn-ghost" href="https://www.linkedin.com/in/nurrehman">linkedin /in/nurrehman</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Nadeem Ur-Rehman</p>
+    <p>built by hand. no frameworks were harmed.</p>
+  </div>
+</footer>
+
 </body>
 </html>
