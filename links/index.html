@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#f5f6f0" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0c1010" media="(prefers-color-scheme: dark)" />
+  <meta name="description" content="Short, practical takes on AI, software architecture, and the tools worth using." />
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <title>bitTalk links</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f5f6f0;
+      --surface: #ffffff;
+      --ink: #101413;
+      --muted: #5e6662;
+      --line: #cfd5cf;
+      --accent: #146b4f;
+      --accent-ink: #ffffff;
+      --signal: #d5ff48;
+      --signal-ink: #152000;
+      --shadow: 0 18px 48px rgba(26, 36, 31, .10);
+      --grid: rgba(16, 20, 19, .055);
+      --focus: #006dff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0c1010;
+        --surface: #141a18;
+        --ink: #f0f5f1;
+        --muted: #aeb8b1;
+        --line: #34403a;
+        --accent: #6ee7b7;
+        --accent-ink: #072318;
+        --signal: #d5ff48;
+        --signal-ink: #152000;
+        --shadow: 0 22px 56px rgba(0, 0, 0, .38);
+        --grid: rgba(240, 245, 241, .045);
+        --focus: #80b7ff;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html { min-height: 100%; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background-color: var(--bg);
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 32px 32px;
+      font-family: "Manrope", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      width: min(100% - 32px, 660px);
+      margin: 0 auto;
+      padding: clamp(48px, 9vh, 92px) 0 calc(36px + env(safe-area-inset-bottom));
+    }
+
+    .intro {
+      position: relative;
+      padding: 0 2px 30px;
+    }
+
+    .identity {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      font-family: "DM Mono", monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--signal) 22%, transparent);
+    }
+
+    h1 {
+      max-width: 590px;
+      margin: 0;
+      font-size: clamp(38px, 8vw, 68px);
+      line-height: .98;
+      letter-spacing: -.058em;
+      font-weight: 800;
+      text-wrap: balance;
+    }
+
+    .lede {
+      max-width: 540px;
+      margin: 20px 0 0;
+      font-size: clamp(16px, 2.6vw, 19px);
+      line-height: 1.58;
+      color: var(--muted);
+    }
+
+    .products {
+      margin: 0 0 18px;
+    }
+
+    .product-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 22px;
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      border-radius: 18px 18px 5px 18px;
+      background: var(--surface);
+      color: var(--ink);
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .product-card:hover { transform: translateY(-2px); }
+    .product-card:active { transform: translateY(0); }
+
+    .product-title {
+      display: block;
+      font-size: clamp(20px, 4vw, 25px);
+      line-height: 1.2;
+      letter-spacing: -.025em;
+      font-weight: 800;
+    }
+
+    .product-copy {
+      display: block;
+      max-width: 500px;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .product-card .arrow {
+      background: var(--accent);
+      color: var(--accent-ink);
+    }
+
+    .channel-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 22px;
+      padding: 22px 24px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--bg);
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .channel-card:hover { transform: translateY(-2px); }
+    .channel-card:active { transform: translateY(0); }
+
+    .channel-label {
+      display: block;
+      margin-bottom: 7px;
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      opacity: .68;
+    }
+
+    .channel-name {
+      display: block;
+      font-size: clamp(18px, 4vw, 23px);
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    .arrow {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--signal);
+      color: var(--signal-ink);
+      font-family: "DM Mono", monospace;
+      font-size: 22px;
+      transition: transform .18s ease;
+    }
+
+    .product-card:hover .arrow,
+    .channel-card:hover .arrow,
+    .tool-link:hover .arrow { transform: translateX(3px); }
+
+    .elsewhere {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px 16px;
+      margin: 14px 0 0;
+      padding: 0 2px;
+      color: var(--muted);
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .elsewhere span + span::before {
+      content: "/";
+      margin-right: 16px;
+      color: var(--line);
+    }
+
+    .recommendation {
+      margin-top: 42px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 14px;
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-heading::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: var(--line);
+    }
+
+    .tool-card {
+      padding: clamp(22px, 5vw, 30px);
+      border: 1px solid var(--line);
+      border-radius: 18px 18px 5px 18px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .tool-meta {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .tool-tag {
+      display: inline-block;
+      margin: 0 0 11px;
+      padding: 5px 8px;
+      border-radius: 4px;
+      background: var(--signal);
+      color: var(--signal-ink);
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(25px, 5vw, 34px);
+      line-height: 1.12;
+      letter-spacing: -.035em;
+    }
+
+    .tool-mark {
+      flex: 0 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 9px);
+      gap: 5px;
+      margin-top: 6px;
+    }
+
+    .tool-mark i {
+      display: block;
+      width: 9px;
+      height: 9px;
+      background: var(--accent);
+    }
+
+    .tool-copy {
+      max-width: 520px;
+      margin: 16px 0 23px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.62;
+    }
+
+    .tool-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 58px;
+      padding: 7px 8px 7px 18px;
+      border-radius: 9px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .tool-link .arrow {
+      width: 42px;
+      height: 42px;
+      background: var(--surface);
+      color: var(--ink);
+    }
+
+    .disclosure {
+      margin: 15px 2px 0;
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .note {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      margin-top: 38px;
+      padding: 18px 2px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .note-code {
+      padding-top: 1px;
+      font-family: "DM Mono", monospace;
+      color: var(--accent);
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 480px) {
+      .page { width: min(100% - 24px, 660px); padding-top: 38px; }
+      .intro { padding-bottom: 24px; }
+      .product-card { padding: 19px 18px; gap: 14px; border-radius: 15px 15px 4px 15px; }
+      .channel-card { padding: 19px 18px; gap: 14px; }
+      .elsewhere { display: grid; gap: 3px; }
+      .elsewhere span + span::before { content: none; }
+      .recommendation { margin-top: 34px; }
+      .tool-meta { align-items: center; }
+      .tool-card { border-radius: 15px 15px 4px 15px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="intro">
+      <div class="identity"><span class="status-dot" aria-hidden="true"></span>@bitsTalk00</div>
+      <h1>AI without the sales pitch.</h1>
+      <p class="lede">Short, practical takes on AI, software architecture, and the tools actually worth your time.</p>
+    </header>
+
+    <section class="products" aria-labelledby="products-title">
+      <p class="section-heading" id="products-title">Products</p>
+      <a class="product-card" href="https://bittalk.gumroad.com/l/frontend-interview-playbook" target="_blank" rel="noopener noreferrer">
+        <span>
+          <span class="product-title">The Frontend System Design Interview Playbook</span>
+          <span class="product-copy">60 architect-level frontend system design interview questions with answer frameworks. $19.</span>
+        </span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="product-card" href="https://bittalk.gumroad.com/l/frontend-interview-day-cheat-sheet" target="_blank" rel="noopener noreferrer" style="margin-top: 12px;">
+        <span>
+          <span class="product-title">Interview-Day Cheat Sheet (Free)</span>
+          <span class="product-copy">One printable page: the 6-box whiteboard canvas, the 10 checks to run before you stop, and 5 phrases that buy thinking time. Free subscriber bonus from bitTalk.</span>
+        </span>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+    </section>
+
+    <a class="channel-card" href="https://www.youtube.com/@bitsTalk00" target="_blank" rel="noopener noreferrer" aria-label="Watch bitTalk on YouTube">
+      <span>
+        <span class="channel-label">Latest videos</span>
+        <span class="channel-name">Watch on YouTube</span>
+      </span>
+      <span class="arrow" aria-hidden="true">↗</span>
+    </a>
+
+    <div class="elsewhere" aria-label="Other social profiles">
+      <span>Instagram @bit.talk00</span>
+      <span>TikTok @bittalk00</span>
+    </div>
+
+    <section class="recommendation" aria-labelledby="tools-title">
+      <p class="section-heading" id="tools-title">Tool I recommend</p>
+      <article class="tool-card">
+        <div class="tool-meta">
+          <div>
+            <span class="tool-tag">Voice AI</span>
+            <h2>ElevenLabs</h2>
+          </div>
+          <span class="tool-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        </div>
+        <p class="tool-copy">Natural-sounding text-to-speech for videos, prototypes, and voice workflows. This is the voice platform behind the recommendation.</p>
+        <a class="tool-link" href="https://try.elevenlabs.io/ixi5xf4uoc02" target="_blank" rel="sponsored nofollow noopener noreferrer">
+          <span>Try ElevenLabs</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <p class="disclosure">Affiliate link: I may earn a commission if you sign up through this link, at no extra cost to you.</p>
+      </article>
+    </section>
+
+    <footer class="note">
+      <span class="note-code">01</span>
+      <span>Tools earn a place here by being useful, not by paying for the slot.</span>
+    </footer>
+  </main>
+</body>
+</html>
